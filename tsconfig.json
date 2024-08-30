@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "target": "ES2022",
+    "moduleResolution": "bundler",
     "declaration": true,
     "stripInternal": true,
     "skipLibCheck": true,

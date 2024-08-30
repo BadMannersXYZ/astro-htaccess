@@ -1,4 +1,4 @@
-import { integration as htaccessIntegration } from "./htaccess";
-export type { Config as HtaccessConfig, RedirectCode, ErrorCode } from "./htaccess";
+import { integration as htaccessIntegration } from "./htaccess.js";
+export type { Config as HtaccessConfig, RedirectCode, ErrorCode } from "./htaccess.d.ts";
 export { htaccessIntegration };
 export default htaccessIntegration;
