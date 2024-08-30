@@ -113,11 +113,16 @@ export const integration = ({ generateHtaccessFile, errorPages, redirects, custo
           // Automatic error pages and Astro redirects
           () =>
             (!error &&
-              routes.reduce((acc, { type, route, redirectRoute }) => {
+              routes.reduce((acc, { type, route, redirect }) => {
                 if (!error) {
                   switch (type) {
                     case "redirect":
-                      acc.push(`RedirectMatch 301 ^${route}(/(index.html)?)?$ ${redirectRoute!.route}`);
+                      const destination = typeof redirect === "string" ? redirect : redirect?.destination;
+                      if (destination) {
+                        acc.push(`RedirectMatch 301 ^${route}(/(index.html)?)?$ ${destination}`);
+                      } else {
+                        logger.warn(`No destination found for redirect route "${route}"! Skipping.`);
+                      }
                       break;
                     case "page":
                       if (errorPages === undefined) {
