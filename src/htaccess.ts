@@ -1,4 +1,5 @@
 import type { AstroIntegration } from "astro";
+import { existsSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import path, { posix as pathPosix } from "node:path";
 import { fileURLToPath, URL } from "node:url";
@@ -176,7 +177,8 @@ export const integration = ({ generateHtaccessFile, errorPages, redirects, custo
           .map((fn) => fn())
           .flat();
         if (!error) {
-          await writeFile(path.join(assetsDir, ".htaccess"), htaccess.join("\n"));
+          const htaccessPath = path.join(assetsDir, ".htaccess");
+          await writeFile(htaccessPath, [existsSync(htaccessPath) ? "\n" : "", htaccess.join("\n")], { flag: 'a' });
           logger.info(`Generated .htaccess with ${htaccess.length} ${htaccess.length === 1 ? "rule" : "rules"}`);
         }
       },
