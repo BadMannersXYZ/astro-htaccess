@@ -1,6 +1,6 @@
 {
   "name": "astro-htaccess",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Astro integration to generate an Apache .htaccess file",
   "type": "module",
   "exports": {
@@ -33,12 +33,12 @@
   "author": "Bad Manners <npm@badmanners.xyz>",
   "license": "MIT",
   "peerDependencies": {
-    "astro": "^4.0.0"
+    "astro": ">= 4.0.0 < 6"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.3",
+    "@astrojs/check": "^0.9.4",
     "@types/node": "^22.5.1",
-    "astro": "^4.15.1",
+    "astro": "^5.0.1",
     "typescript": "^5.5.4"
   }
 }

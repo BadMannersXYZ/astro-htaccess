@@ -66,7 +66,7 @@ export const integration = ({ generateHtaccessFile, errorPages, redirects, custo
           assetsDir = fileURLToPath(new URL(".vercel/output/static/", config.root));
         } else if (config.adapter?.name === "@astrojs/cloudflare") {
           assetsDir = fileURLToPath(new URL(config.base?.replace(/^\//, ""), config.outDir));
-        } else if (config.adapter?.name === "@astrojs/node" && config.output === "hybrid") {
+        } else if (config.adapter?.name === "@astrojs/node") {
           assetsDir = fileURLToPath(config.build.client!);
         } else {
           assetsDir = fileURLToPath(config.outDir);
