@@ -51,8 +51,8 @@ export const integration = ({ generateHtaccessFile, errorPages, redirects, custo
             generateHtaccessFile === undefined
               ? true
               : typeof generateHtaccessFile === "function"
-                ? !(await generateHtaccessFile())
-                : !generateHtaccessFile;
+                ? (await generateHtaccessFile())
+                : generateHtaccessFile;
         }
         if (!enabled) {
           logger.debug("generateHtaccessFile evaluated to false; skipping integration config.");
@@ -78,8 +78,8 @@ export const integration = ({ generateHtaccessFile, errorPages, redirects, custo
             generateHtaccessFile === undefined
               ? true
               : typeof generateHtaccessFile === "function"
-                ? !(await generateHtaccessFile())
-                : !generateHtaccessFile;
+                ? (await generateHtaccessFile())
+                : generateHtaccessFile;
         }
         if (!enabled) {
           logger.debug("generateHtaccessFile evaluated to false; skipping .htaccess generation.");
